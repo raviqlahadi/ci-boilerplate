@@ -21,7 +21,7 @@
             foreach ($table_head as $key_head => $value_head) {
                 echo "<td>" . $value->{$value_head} .  "</td>";
             }
-            echo "<td>".$this->form_template->action_dropdown($page_url, $value->id)."</td>";
+            echo "<td>".$this->table_template->action_dropdown($page_url, $value->id)."</td>";
             echo "</tr>";
             $no++;
         }

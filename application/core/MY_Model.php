@@ -33,7 +33,8 @@ class MY_Model extends CI_Model
         
         $select = (isset($data['select'])) ? $data['select'] : null;
         $select_join = (isset($data['select_join'])) ? $data['select_join'] : null;
-
+        $join = (isset($data['join'])) ? $data['join'] : null;
+        
         if ($select == null || !is_array($select)) {
             $this->db->select('*');
         } else {
@@ -55,8 +56,6 @@ class MY_Model extends CI_Model
 
         $this->db->from($this->table);
 
-        
-        $join = (isset($data['join'])) ? $data['join'] : null;
         
         if ($join != null && is_array($join)) {
             foreach ($join as $j) {

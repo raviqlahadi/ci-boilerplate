@@ -70,18 +70,7 @@ class Form_template{
         ";
     }
 
-    public function action_dropdown($url, $id){
-        return "
-            <div class='dropdown'>
-                <button class='btn btn-primary btn-sm dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                    Action
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                    <a class='dropdown-item' href='" . $url . "?edit=true&id=" . $id . "'>Edit</a>
-                    <a class='dropdown-item text-danger' href='" . $url . "/delete/" . $id . "'>Delete</a>
-            </div>
-        ";
-    }
+    
 
 
 

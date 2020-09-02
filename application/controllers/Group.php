@@ -9,7 +9,10 @@ class Group extends CI_Controller
         parent::__construct();
         //Do your magic here
         $this->load->library('form_template');
+        $this->load->library('table_template');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
+        
         $this->load->model('m_groups');
         
         
@@ -18,13 +21,41 @@ class Group extends CI_Controller
     public function index()
     {
 
+
+        //pagination config
+        $limit = $this->input->get('limit');
+        $limit_per_page = ($limit != null && $limit != '') ? $limit : 2;
+        $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
+        $start_record = $page * $limit_per_page;        
+        
         //table props
         $data['table_head'] = array('name','description');
 
         $search = ($this->input->get('search') != null ) ? $this->input->get('search') : false ;
-
         
-        $data['table_content'] = $this->m_groups->get();
+
+        if($search){
+            $fetch['like'] = array('name'=>array('name','description'), 'key'=>$search);
+        }
+
+        $fetch['select'] = array('id','name', 'description');
+        $fetch['start'] = $start_record;
+        $fetch['limit'] = $limit_per_page;
+        $data['table_content'] = $this->m_groups->fetch($fetch);
+        $total_records = $this->m_groups->fetch($fetch,true);
+
+        //pagination config
+        $pagination['base_url'] = site_url($this->url) . '/index';
+        $pagination['limit_per_page'] = $limit_per_page;
+        $pagination['start_record'] = $start_record;
+        $pagination['uri_segment'] = 3;
+        $pagination['total_records'] =  $total_records;
+        if ($pagination['total_records'] > 0){
+            $config = $this->table_template->set_pagination($pagination);
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
+        } 
+
         
 
         //page properties        

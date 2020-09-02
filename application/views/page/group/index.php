@@ -11,6 +11,7 @@
                                     <span class="search-toogle float-right" data-toggle="collapse" type="button" data-target="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch">
                                         <i class="fa fa-search"></i>
                                     </span>
+
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -20,6 +21,7 @@
                                                     <div class="input-group pb-3">
                                                         <input class="form-control" id="search" type="text" name="search" placeholder="Seach" required>
                                                         <span class="input-group-append">
+                                                            <a class="btn btn-info" href="<?php echo $page_url; ?>"><i class="fa fa-sync-alt"></i></a>
                                                             <button class="btn btn-primary" type="submit">Search</button>
                                                         </span>
                                                     </div>
@@ -34,9 +36,9 @@
                                     </div>
 
                                 </div>
-                                <!-- <div class="card-footer">
-                                        insert pagination here
-                                </div> -->
+                                <div class="card-footer">
+                                    <?php echo $pagination?>
+                                </div>
                             </div>
 
                         </div>
