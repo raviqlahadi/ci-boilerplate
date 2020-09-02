@@ -7,7 +7,7 @@
             foreach ($table_head as $key => $value) {
                 echo "<th>" . ucfirst($value) .  "</th>";
             }
-            echo "<th>Action</th>";
+            echo "<th><span class='float-right'>Action</span></th>";
 
             ?>
         </tr>
@@ -22,7 +22,7 @@
             foreach ($table_head as $key_head => $value_head) {
                 echo "<td>" . $value->{$value_head} .  "</td>";
             }
-            echo "<td>".$this->table_template->action_dropdown($page_url, $value->id,$page_url."?edit=true&id=".$value->id)."</td>";
+            echo "<td><span class='float-right'>".$this->table_template->action_dropdown($page_url, $value->id)."</span></td>";
             echo "</tr>";
            
         }

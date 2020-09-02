@@ -1,17 +1,20 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Group extends CI_Controller
+class Group extends MY_Controller
 {
     private $url = 'group';
     public function __construct()
     {
         parent::__construct();
         //Do your magic here
+        $this->check_access();
+
         $this->load->library('form_template');
         $this->load->library('table_template');
         $this->load->library('form_validation');
         $this->load->library('pagination');
+        $this->load->library('breadcrumbs');
         
         $this->load->model('m_groups');
         
@@ -22,9 +25,10 @@ class Group extends CI_Controller
     {
 
 
-        //pagination config
+        //page config
+        $edit = ($this->input->get('edit') != null ? true : false);
         $limit = $this->input->get('limit');
-        $limit_per_page = ($limit != null && $limit != '') ? $limit : 2;
+        $limit_per_page = ($limit != null && $limit != '') ? $limit : 5;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $start_record = $page * $limit_per_page;        
         
@@ -50,16 +54,24 @@ class Group extends CI_Controller
         $pagination['start_record'] = $start_record;
         $pagination['uri_segment'] = 3;
         $pagination['total_records'] =  $total_records;
+        $data['pagination'] = false;
         if ($pagination['total_records'] > 0){
             $config = $this->table_template->set_pagination($pagination);
             $this->pagination->initialize($config);
             $data['pagination'] = $this->pagination->create_links();
-        } 
+        }
 
-        
+
+        //breadcrumbs config
+        $this->breadcrumbs->push('Group', '/group');
+        if($edit) $this->breadcrumbs->push('Edit', '/edit');
+        $this->breadcrumbs->unshift('Admin', '/');
+
 
         //page properties        
+        $data['breadcrumbs'] = $this->breadcrumbs->show();
         $data['page_title'] = 'Group Management';
+        $data['table_start_number'] = $start_record;
         $data['page_content'] = 'page/group/index';
         $data['page_current'] = 'page/group';
         $data['page_url'] = site_url($this->url);
@@ -67,7 +79,7 @@ class Group extends CI_Controller
        
         //form porperties      
         //if edit action clicked
-        $edit = ($this->input->get('edit') != null ? true : false);
+       
         if($edit){
             $id = $this->input->get('id');
             if (isset($id) && $id!=null) {

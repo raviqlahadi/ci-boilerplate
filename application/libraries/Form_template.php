@@ -21,13 +21,56 @@ class Form_template{
             $placeholder = 'Enter your '. $name;
         }
         return "
-        <label class='col-md-3 col-form-label' for='" . $name . "'>" . $label . "</label>
-        <div class='col-md-9'>
-            <input class='form-control' id='". $name . "' type='text' name='" . $name . "' placeholder='" . $placeholder . "' value='" . $value . "'>
-        </div>
+        <label class='col-form-label' for='" . $name . "'>" . $label . "</label>
+        <input class='form-control' id='". $name . "' type='text' name='" . $name . "' placeholder='" . $placeholder . "' value='" . $value . "'>
+        
         
         ";
 
+    }
+
+    public function password($label, $name, $placeholder = null, $value = null)
+    {
+        if ($placeholder == null) {
+            $placeholder = 'Enter your ' . $name;
+        }
+        return "
+        <label class='col-form-label' for='" . $name . "'>" . $label . "</label>
+        <input class='form-control' id='" . $name . "' type='password' name='" . $name . "' placeholder='" . $placeholder . "' value='" . $value . "'>
+        
+        
+        ";
+    }
+
+    public function email($label, $name, $placeholder = null, $value = null)
+    {
+        if ($placeholder == null) {
+            $placeholder = 'Enter your ' . $name;
+        }
+        return "
+        <label class='col-form-label' for='" . $name . "'>" . $label . "</label>
+        <input class='form-control' id='" . $name . "' type='email' name='" . $name . "' placeholder='" . $placeholder . "' value='" . $value . "'>
+        
+        
+        ";
+    }
+
+    public function select($label, $name, $option, $selected = null)
+    {
+        $select_option = "<option value='0'>Please select</option>";
+        foreach ($option as $key => $value) {
+
+            $is_selected = ($selected != null && $value->id == $selected) ? 'selected' : '';
+            $select_option = $select_option."<option " . $is_selected . " value='".$value->id."'>".$value->name."</option>";
+        }
+       
+
+        return "
+        <label class='col-form-label' for='" . $name . "'>" . $label . "</label>
+        <select class='form-control' id='select1' name='" . $name . "'>
+            " . $select_option . "
+        </select>
+        ";
     }
 
     /**
@@ -46,10 +89,10 @@ class Form_template{
             $placeholder = 'enter your ' . $name;
         }
         return "
-            <label class='col-md-3 col-form-label' for='" . $name . "'>" . $label . "</label>
-           <div class='col-md-9'>
-                <textarea name='" . $name . "' id='' cols='30' rows='10' class='form-control'placeholder='" . $placeholder . "'>" . $value . "</textarea>
-            </div>
+            <label class='col-form-label' for='" . $name . "'>" . $label . "</label>
+          
+            <textarea name='" . $name . "' id='' cols='30' rows='10' class='form-control'placeholder='" . $placeholder . "'>" . $value . "</textarea>
+          
             
             ";
     }

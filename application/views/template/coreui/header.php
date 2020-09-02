@@ -12,22 +12,24 @@
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item dropdown">
             <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class=""><?php echo $this->session->username?></div>
+                <div class=""><?php echo $this->session->username ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-2">
-                <a class="dropdown-item" href="<?php echo site_url('auth/logout')?>">
+                <a class="dropdown-item" href="<?php echo site_url('auth/logout') ?>">
                     <i class="fa fa-sign-out-alt c-icon mr-2"></i> Logout
                 </a>
             </div>
         </li>
     </ul>
-    <div class="c-subheader px-3">
-        <!-- Breadcrumb-->
-        <ol class="breadcrumb border-0 m-0">
-            <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-            <!-- Breadcrumb Menu-->
-        </ol>
-    </div>
+    <!-- Breadcrumb-->
+    <?php
+        if(isset($breadcrumbs)){
+            echo '
+                 <div class="c-subheader px-3">
+                    '. $breadcrumbs .'
+                </div>
+            ';
+        }
+    ?>
+    <!-- Breadcrumb Menu-->
 </header>

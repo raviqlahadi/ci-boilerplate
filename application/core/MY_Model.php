@@ -62,8 +62,8 @@ class MY_Model extends CI_Model
 
                 if (isset($j['previx']) && $j['previx'] != null) {
                     $on = (isset($j['reverse']) && $j['reverse'])
-                        ? $this->table . '.' . $this->id . '=' . $j['previx'] . '.' . $j['id']
-                        : $this->table . '.' . $j['id'] . '=' . $j['previx'] . '.' . $this->id;
+                        ? $this->table . '.' . $this->id . '=' . $j['previx'] . '.' . $j['fk']
+                        : $this->table . '.' . $j['fk'] . '=' . $j['previx'] . '.' . $this->id;
                     $this->db->join(
                         $j['table'],
                         $on,
@@ -71,11 +71,11 @@ class MY_Model extends CI_Model
                     );
                 } else {
                     $on = (isset($j['reverse']) && $j['reverse'])
-                        ? $this->table . '.' . $this->id . '=' . $j['table'] . '.' . $j['id']
-                        : $this->table . '.' . $j['id'] . '=' . $j['table'] . '.' . $this->id;
+                        ? $this->table . '.' . $this->id . '=' . $j['table'] . '.' . $j['fk']
+                        : $this->table . '.' . $j['fk'] . '=' . $j['table'] . '.' . $this->id;
                     $this->db->join(
                         $j['table'],
-                        $this->table . '.' . $j['id'] . '=' . $j['table'] . '.' . $this->id,
+                        $this->table . '.' . $j['fk'] . '=' . $j['table'] . '.' . $this->id,
                         $j['join']
                     );
                 }

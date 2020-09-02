@@ -5,8 +5,11 @@ class MY_Controller extends CI_Controller{
         parent::__construct();
     }
 
-    public function check_access($access){
-        $curent_level = $this->session->get('level');
+    public function check_access($access=null){
+        if (!$this->session->logged_in) {
+            $this->session->set_flashdata('alert', $this->alert->set_alert('danger', 'Anda perlu login untuk mengakses halaman ini'));
+            redirect('auth');
+        }
         
     }
 }

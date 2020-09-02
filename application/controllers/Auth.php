@@ -10,7 +10,7 @@
         
         parent::__construct();
         //Do your magic here
-        $this->load->model('m_user');
+        $this->load->model('m_users');
        
         
     }
@@ -28,7 +28,7 @@
         $email = $this->input->post('username');
         $password = $this->input->post('password');
        
-        $user_data = $this->m_user->getWhere(array('email'=>$email));
+        $user_data = $this->m_users->getWhere(array('email'=>$email));
         if(!empty($user_data)){
             $user_data = $user_data[0];
             if(password_verify($password, $user_data->password)){

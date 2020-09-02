@@ -20,6 +20,11 @@
                 <i class="fa fa-users c-sidebar-nav-icon"></i> Group
             </a>
         </li>
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="<?php echo base_url('user') ?>">
+                <i class="fa fa-user c-sidebar-nav-icon"></i> User
+            </a>
+        </li>
 
 
     </ul>

@@ -4,13 +4,14 @@
             <div>
                 <div class="fade-in">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
                                     <?php echo $page_title ?>
-                                    <span class="search-toogle float-right" data-toggle="collapse" type="button" data-target="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch">
+                                    <a class="btn btn-primary float-right text-white" href="<?php echo $page_url . '/create'; ?>"><i class="fa fa-plus"></i> New Data</a>
+                                    <button class="btn btn-primary mr-1 float-right" data-toggle="collapse" type="button" data-target="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch">
                                         <i class="fa fa-search"></i>
-                                    </span>
+                                    </button>
 
                                 </div>
                                 <div class="card-body">
@@ -19,7 +20,7 @@
                                             <div class="collapse" id="collapseSearch">
                                                 <form action="" method="get">
                                                     <div class="input-group pb-3">
-                                                        <input class="form-control" id="search" type="text" name="search" placeholder="Seach" required>
+                                                        <input class="form-control" id="search" type="text" name="search" placeholder="Search" required>
                                                         <span class="input-group-append">
                                                             <a class="btn btn-info" href="<?php echo $page_url; ?>"><i class="fa fa-sync-alt"></i></a>
                                                             <button class="btn btn-primary" type="submit">Search</button>
@@ -44,20 +45,6 @@
                                                 </div>';
                                 }
                                 ?>
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header"><?php echo $form_title ?></div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 px-5">
-                                            <?php $this->load->view($page_current . '/form') ?>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
 

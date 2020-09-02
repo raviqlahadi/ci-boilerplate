@@ -1,15 +1,20 @@
 <?php 
 class Table_template 
 {
-    public function action_dropdown($url, $id)
+    public function action_dropdown($url, $id, $edit_url=null)
     {
+        if($edit_url!=null){
+            $edit = "<a class='dropdown-item' href='" . $edit_url . "'>Edit</a>";
+        }else{
+            $edit = " <a class='dropdown-item' href='" . $url . "/edit/" . $id . "'>Edit</a>";
+        }
         return "
             <div class='dropdown'>
                 <button class='btn btn-primary btn-sm dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     Action
                 </button>
                 <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                    <a class='dropdown-item' href='" . $url . "?edit=true&id=" . $id . "'>Edit</a>
+                    ".$edit."
                     <a class='dropdown-item text-danger' href='" . $url . "/delete/" . $id . "'>Delete</a>
             </div>
         ";

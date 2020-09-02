@@ -53,5 +53,4 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
-$route['groups:/id'] = 'group/detail/:id';
+$route['group/(:id)'] = 'group/kontol';
