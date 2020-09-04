@@ -11,7 +11,7 @@ if (isset($validation_error) && $validation_error !== null) echo $validation_err
         <?php echo $this->form_template->select('User Level', 'group_id', $group_select, (isset($form_value)) ? $form_value['group_id'] : null) ?>
     </div>
     <?php
-    if (!$edit) {
+    if (!isset($edit) || !$edit){
     ?>
         <div class="form-group row">
             <?php echo $this->form_template->password('Password', 'password', 'add password here', (isset($form_value)) ? $form_value['password'] : null) ?>

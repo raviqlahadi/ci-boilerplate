@@ -12,7 +12,7 @@
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item dropdown">
             <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class=""><?php echo $this->session->username ?></div>
+                <div class=""><?php echo ucwords($this->session->username) ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-2">
                 <a class="dropdown-item" href="<?php echo site_url('auth/logout') ?>">

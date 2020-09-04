@@ -20,7 +20,7 @@
             echo "<tr>";
             echo "<td>" . $no . "</td>";
             foreach ($table_head as $key_head => $value_head) {
-                echo "<td>" . $value->{$value_head} .  "</td>";
+                echo "<td>" . $value->{$key_head} .  "</td>";
             }
             echo "<td><span class='float-right'>".$this->table_template->action_dropdown($page_url, $value->id)."</span></td>";
             echo "</tr>";

@@ -33,15 +33,21 @@ class Group extends MY_Controller
         $start_record = $page * $limit_per_page;        
         
         //table props
-        $data['table_head'] = array('name','description');
+        $data['table_head'] = array(
+            'name' => 'Nama Group User',
+            'description' => "Keterangan"
+        );
 
+
+        //get search from url
         $search = ($this->input->get('search') != null ) ? $this->input->get('search') : false ;
         
-
+        //add search to fetch data props
         if($search){
             $fetch['like'] = array('name'=>array('name','description'), 'key'=>$search);
         }
 
+        //fetch data props
         $fetch['select'] = array('id','name', 'description');
         $fetch['start'] = $start_record;
         $fetch['limit'] = $limit_per_page;

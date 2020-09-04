@@ -32,7 +32,11 @@ class User extends MY_Controller
         $start_record = $page * $limit_per_page;        
         
         // table props, change this base on table props
-        $data['table_head'] = array('username','email','level');
+        $data['table_head'] = array(
+            'username' => 'Nama User',
+            'email' => 'Email',
+            'level' => 'Level User'
+        );
 
         $search = ($this->input->get('search') != null ) ? $this->input->get('search') : false ;
         
